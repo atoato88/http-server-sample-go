@@ -1,0 +1,17 @@
+version: '3'
+services:
+  http-server-sample:
+    build: .
+    command:
+    - "-port"
+    - "8080"
+    ports:
+    - "8080:8080"
+      #    links:
+      #    - "redis"
+  redis:
+    image: "redis:latest"
+    #    ports:
+    #    - "6379:6379"
+    restart: always
+

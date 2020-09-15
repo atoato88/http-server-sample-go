@@ -22,6 +22,16 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(info)
 }
 
+func pingHandler(w http.ResponseWriter, r *http.Request) {
+	pong := []byte("pong")
+	w.Write(pong)
+}
+
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	response := fmt.Sprintf("Hello %s", r.RemoteAddr)
+	w.Write([]byte(response))
+}
+
 func HandleError(result interface{}, err error) (r interface{}) {
 	if err != nil {
 		panic(err)
@@ -44,6 +54,8 @@ func main() {
 	defer redisPool.Close()
 
 	http.HandleFunc("/info", infoHandler)
+	http.HandleFunc("/ping", pingHandler)
+	http.HandleFunc("/hello", helloHandler)
 	listenAddr := fmt.Sprintf("%v:%v", *host, *port)
 	log.Fatal(http.ListenAndServe(listenAddr, nil))
 }

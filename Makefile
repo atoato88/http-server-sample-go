@@ -17,7 +17,7 @@ clean:
 	rm $(BIN)
 
 test:
-	go test ./... -v -cover
+	go test . -v -cover
 
 integration-test:
 	docker-compose up -d

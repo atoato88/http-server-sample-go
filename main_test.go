@@ -1,7 +1,6 @@
 package main
 
 import (
-	"net/http"
 	"testing"
 )
 
@@ -23,11 +22,4 @@ func Test_initDefault(t *testing.T) {
 	if *redisPort != expectedRedisPort {
 		t.Fatalf("redis server port isn't default value. expacted:%v actual:%v", expectedRedisPort, *redisPort)
 	}
-}
-
-func Test_initDefault(t *testing.T) {
-	http.HandleFunc("/info", infoHandler)
-	http.HandleFunc("/ping", pingHandler)
-	http.HandleFunc("/hello", helloHandler)
-	listenAddr := fmt.Sprintf("%v:%v", *host, *port)
 }

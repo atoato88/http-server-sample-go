@@ -21,5 +21,5 @@ test:
 
 integration-test:
 	docker-compose up -d
-	curl http://localhost:8080/ping
+	go test ./test/integration -v 
 	docker-compose down
